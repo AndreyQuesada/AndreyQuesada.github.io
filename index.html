@@ -89,17 +89,26 @@ informacion.onclick = info;
 copiar.onclick = copy;
 
 function copy() {
-    Swal.fire({
-            position: 'center',
-            icon: 'success',
-            title: 'Copiado',
-            text: 'Copiado al portapaples',
-            showConfirmButton: false,
-            timer: 1500
-        })
-    cajaText.select();
-    document.execCommand("copy");
-    window.getSelection().removeAllRanges();
+        if (cajaText.value == "") {
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'No hay nada que copiar :('
+            })
+        } else {
+            Swal.fire({
+                position: 'center',
+                icon: 'success',
+                title: 'Copiado',
+                text: 'Copiado al portapaples',
+                showConfirmButton: false,
+                timer: 1500
+            })
+            cajaText.select();
+            document.execCommand("copy");
+            window.getSelection().removeAllRanges();
+        }
+
 }
 function info() {
     Swal.fire(
